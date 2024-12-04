@@ -7,17 +7,19 @@
 # though exit code 0 and "done" is returned. This could be after X amount of commands, or too
 # long execution time, not sure why. Hence this file should be as short as possible.
 
-LOGFILE=/ks/step3-verify.log
+LOGFILE=/ks/step2-verify.log
 set -e # exit once any command fails
 
 {
     date
 
-    docker image ls | grep tomcat-with-war
-
-    docker image ls | grep local-registry:5000/pinger | grep v1
-
+    docker image ls | grep local-registry:5000/pinger | grep latest
+    
     curl http://local-registry:5000/v2/pinger/tags/list -k | grep pinger | grep v1
+
+
+
+    curl http://local-registry:5000/v2/pinger/tags/list -k | grep pinger | grep latest
 
     rm /tmp/curl || true
 

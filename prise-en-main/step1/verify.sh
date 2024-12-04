@@ -12,7 +12,7 @@ set -e # exit once any command fails
 
 {
     date
-    docker image ls 
+    docker image ls | grep hello
 } >> ${LOGFILE} 2>&1
 
 echo "done" # let Validator know success

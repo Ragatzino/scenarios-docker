@@ -1,22 +1,61 @@
 
-Without specifying a `:tag`, the default `:latest` will be used. Now we want to use tag `:v1` instead.
+Dans cette partie nous allons voir comment construire des images a partir d'autres images.
 
-Tag the image, which is currently tagged as `pinger`, also as `pinger:v1` and `local-registry:5000/pinger:v1`.
 
-Then push the image into the local registry.
+Voici le dockerfile que nous allons utiliser pour l'installation : 
 
-<br>
-<details><summary>Solution</summary>
-<br>
+```Dockerfile
+# Utilise l'image officielle Tomcat
+FROM tomcat:10-jre21
 
-```plain
-docker tag pinger pinger:v1
+# Télécharge le fichier WAR depuis une URL
+RUN curl -o /usr/local/tomcat/webapps/app.war https://tomcat.apache.org/tomcat-10.0-doc/appdev/sample/sample.war
 
-docker tag pinger local-registry:5000/pinger:v1
+# Expose le port 8080
+EXPOSE 8080
 
-docker image ls
+# Commande pour démarrer Tomcat
+CMD ["catalina.sh", "run"]
+```
 
-docker push local-registry:5000/pinger:v1
-```{{exec}}
+Créez ce Dockerfile dans /root/Dockerfile
 
-</details>
+`
+touch /root/Dockerfile
+`{execute}
+
+
+**Création du livrable : l'image Docker**
+> A partir d'un Dockerfile localisé dans un repertoire /dir/ on peut construire une image docker
+
+Utilisez la commande suivante pour construire l'image Docker :
+
+`
+docker build -t tomcat-with-war .
+`{execute}
+
+> L'option -t génère un tag pour l'image, par défaut latest, si vous désirez taguer l'image avec une vraie valeur, ajoutez **:v1** ou autre
+
+
+**Vérifications**
+
+Vous pouvez vérifier que votre image est bien construite
+
+`
+docker image list
+`{execute}
+
+
+La lancer
+
+`
+docker run -d --name montomcatavecwar -p 8080:8080 tomcat-with-war
+`{execute}
+
+
+Et vérifier qu'elle tourne bien :
+
+`
+curl -vv localhost:8080/app
+`{execute}
+

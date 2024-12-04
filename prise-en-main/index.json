@@ -9,19 +9,24 @@
     },
     "steps": [
       {
-        "title": "Hello world",
+        "title": "Docker run, Hello world",
         "text": "step1/text.md",
         "verify": "step1/verify.sh"
       },
       {
-        "title": "Test",
+        "title": "Docker run, quelques options : exemple avec un tomcat",
         "text": "step2/text.md",
         "verify": "step2/verify.sh"
       },
       {
-        "title": "test 3",
+        "title": "Construction d'image, Dockerfile, Docker build",
         "text": "step3/text.md",
         "verify": "step3/verify.sh"
+      },
+      {
+        "title": "Tagging d'image, Docker push",
+        "text": "step4/text.md",
+        "verify": "step4/verify.sh"
       }
     ],
     "assets": {
