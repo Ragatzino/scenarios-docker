@@ -6,7 +6,6 @@ L'utilisation de docker se limite a quelques cas :
 - Déploiement d'images sur un registre d'images **docker push**
 
 L'objectif de cette partie est l'execution d'images pour découvrir docker.
-## Execution d'images
 
 Commençons par executer une image docker de base : 
 
@@ -15,11 +14,12 @@ docker run hello-world
 `{{execute}}
 
 Cette image décrit tout le déroulement de sa récupération a son execution.
-## Quelques options
+
+*Quelques options*
 
 **Choisir sa version :** 
 
-Le numéro après le **:** permet de définir la version. (voir https://hub.docker.com/_/tomcat) par exemple tomcat:9-jre11 => 9-jre11 = java 11, tomcat 9.
+Le numéro après le **:** permet de définir la version. (voir https://hub.docker.com/_/tomcat) par exemple tomcat:10-jre21 => 10-jre21 = java 21, tomcat 10.
 
 Des versions plus légères (slim) existent également.
 
@@ -28,7 +28,7 @@ Des versions plus légères (slim) existent également.
 L'option -p permet de définir le port sur la machine hote ouvert sur le conteneur : un tomcat exposant sur le port 8080 par défaut
 
 `
-docker run --name tomcat1 -p 8080:8080 tomcat:9-jre11
+docker run --name tomcat1 -p 8080:8080 tomcat:10-jre21
 `{{execute}}
 
 > Cela expose le port 8080 du conteneur vers le port 8080 de la machine.
@@ -40,15 +40,11 @@ L'option -d permet de lancer un conteneur sur la machine en arrière plan.
 => Cette option fait que l'on retourne l'id du conteneur
 
 `
-docker run -d --name tomcat2 -p 8888:8080 tomcat:9-jre11
+docker run -d --name tomcat2 -p 8888:8080 tomcat:10-jre21
 `{{execute}}
 
 
-###Consultez les processus
-
-`
-ps
-`{{execute}}
+**Consultez les images qui tournent**
 
 `
 docker ps
