@@ -15,12 +15,6 @@ set -e # exit once any command fails
 
     docker image ls | grep tomcat-with-war
 
-    docker image ls | grep local-registry:5000/pinger | grep v1
-
-    curl http://local-registry:5000/v2/pinger/tags/list -k | grep pinger | grep v1
-
-    rm /tmp/curl || true
-
 } >> ${LOGFILE} 2>&1
 
 echo "done" # let Validator know success

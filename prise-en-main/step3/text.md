@@ -22,8 +22,9 @@ Créez ce Dockerfile dans /root/Dockerfile
 
 `
 touch /root/Dockerfile
-`{execute}
+`{{execute}}
 
+> **🔥🔥🔥🔥 Remplissez le avec l'editeur de votre choix 🔥🔥🔥🔥**
 
 **Création du livrable : l'image Docker**
 > A partir d'un Dockerfile localisé dans un repertoire /dir/ on peut construire une image docker
@@ -31,11 +32,22 @@ touch /root/Dockerfile
 Utilisez la commande suivante pour construire l'image Docker :
 
 `
-docker build -t tomcat-with-war .
-`{execute}
+docker build -t tomcat-with-war /root/
+`{{execute}}
 
 > L'option -t génère un tag pour l'image, par défaut latest, si vous désirez taguer l'image avec une vraie valeur, ajoutez **:v1** ou autre
 
+Vous pouvez également générer de multiples tag pour une image (c'est ce qu'on fait le plus souvent):
+
+`
+docker build -t tomcat-with-war:1.0.0 /root/
+`{{execute}}
+
+Ou alternativement 
+
+`
+docker tag tomcat-with-war tomcat-with-war:1.0.0
+`{{execute}}
 
 **Vérifications**
 
@@ -43,19 +55,18 @@ Vous pouvez vérifier que votre image est bien construite
 
 `
 docker image list
-`{execute}
+`{{execute}}
 
 
 La lancer
 
 `
 docker run -d --name montomcatavecwar -p 8080:8080 tomcat-with-war
-`{execute}
+`{{execute}}
 
 
 Et vérifier qu'elle tourne bien :
 
 `
 curl -vv localhost:8080/app
-`{execute}
-
+`{{execute}}

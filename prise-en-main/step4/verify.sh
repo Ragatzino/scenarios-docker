@@ -13,15 +13,10 @@ set -e # exit once any command fails
 {
     date
 
-    docker image ls | grep local-registry:5000/pinger | grep latest
+    docker image ls | grep local-registry:5000/tomcat-with-war | grep latest
     
-    curl http://local-registry:5000/v2/pinger/tags/list -k | grep pinger | grep v1
+    curl http://local-registry:5000/v2/tomcat-with-war/tags/list -k | grep tomcat-with-war | grep 1.0.0
 
-
-
-    curl http://local-registry:5000/v2/pinger/tags/list -k | grep pinger | grep latest
-
-    rm /tmp/curl || true
 
 } >> ${LOGFILE} 2>&1
 

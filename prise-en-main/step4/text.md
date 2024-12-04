@@ -1,20 +1,25 @@
+Une fois qu'on a construit une image en local on veut la déployer.
 
-> Press Ctrl+c to exit the running container
+L'objectif de cette partie est de déployer notre image sur le registry local `local-registry:5000/pinger`.
 
-Tag the image, which is currently tagged as `pinger`, also as `local-registry:5000/pinger`.
 
-Then push the image into the local registry.
+**La norme est de taguer l'image localement au registry cible :** 
 
-<br>
-<details><summary>Solution</summary>
-<br>
+`
+docker tag tomcat-with-war local-registry:5000/tomcat-with-war
+`
 
-```plain
-docker tag pinger local-registry:5000/pinger
+`
+docker tag tomcat-with-war:1.0.0 local-registry:5000/tomcat-with-war:1.0.0
+`
 
-docker image ls
 
-docker push local-registry:5000/pinger
-```{{exec}}
+**Puis de la pusher**
 
-</details>
+`
+docker push local-registry:5000/tomcat-with-war
+`{execute}
+
+
+> Dans les faits il y a souvent une authentification : **docker login**. On approfondira pas plus.
+
