@@ -1,1 +1,0 @@
-Using CMD and ENTRYPOINT in Dockerfile.
