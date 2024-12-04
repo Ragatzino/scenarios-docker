@@ -11,11 +11,7 @@ LOGFILE=/ks/step1-verify.log
 set -e # exit once any command fails
 
 {
-    date
-
-    docker image ls | grep pinger
-    docker ps | grep my-ping
-
+    history | grep "docker run hello-world" 
 } >> ${LOGFILE} 2>&1
 
 echo "done" # let Validator know success
