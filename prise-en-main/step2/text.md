@@ -58,6 +58,8 @@ docker exec tomcat2 cat README.md
 docker exec -it tomcat2 bash
 `{{execute}}
 
+Veuillez utiliser la commande `exit` pour sortir.
+
 - (ne fonctionne que si l'image à bash, évidemment)
 
 *Voir les logs: (stdout)*
@@ -70,5 +72,5 @@ docker logs tomcat2
 
 
 `
-curl -vv localhost:8088
+curl -vv localhost:8888
 `{{execute}}

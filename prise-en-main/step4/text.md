@@ -17,9 +17,12 @@ docker tag tomcat-with-war:1.0.0 local-registry:5000/tomcat-with-war:1.0.0
 **Puis de la pusher**
 
 `
-docker push local-registry:5000/tomcat-with-war
+docker push local-registry:5000/tomcat-with-war:1.0.0
 `{{execute}}
 
+`
+docker push local-registry:5000/tomcat-with-war
+`{{execute}}
 
 > Dans les faits il y a souvent une authentification : **docker login**. On approfondira pas plus.
 
